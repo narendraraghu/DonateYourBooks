@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
-import java.text.SimpleDateFormat;
-
 @Component
 public class DatabaseSeeder implements CommandLineRunner {
 
@@ -33,11 +31,25 @@ public class DatabaseSeeder implements CommandLineRunner {
         booksRepository.save(new Books(874,"C","Test2Author", 2000));
         booksRepository.save(new Books(236,"ML and Advance ML","Test4Author", 800));
 
-        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
-        java.util.Date dob = df.parse("12-08-1989");
-        userRepository.save(new User("User1", dob));
-        userRepository.save(new User("User2", dob));
-        userRepository.save(new User("User3", dob));
+//        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+//        java.util.Date dob = df.parse("12-08-1989");
+        User user1 = new User();
+        user1.setFirstName("Devglan");
+        user1.setLastName("Devglan");
+        user1.setSalary(12345);
+        user1.setAge(23);
+        user1.setUsername("devglan");
+        user1.setPassword("devglan");
+        userRepository.save(user1);
+
+        User user2 = new User();
+        user2.setFirstName("John");
+        user2.setLastName("Doe");
+        user2.setSalary(4567);
+        user2.setAge(34);
+        user2.setUsername("john");
+        user2.setPassword("john");
+        userRepository.save(user2);
   }
 }
 

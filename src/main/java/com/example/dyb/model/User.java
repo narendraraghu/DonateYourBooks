@@ -1,11 +1,11 @@
 package com.example.dyb.model;
 
 import java.util.Date;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -13,35 +13,30 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@ApiModel(description="All details about the user")
+
 @Entity
+@Table(name = "user")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class User
-{
-    //making Id as primary key
+public class User {
+
     @Id
-    @GeneratedValue
-    private Integer id;
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    private int id;
+    @Column
+    private String firstName;
+    @Column
+    private String lastName;
+    @Column
+    private String username;
+    @Column
+    @JsonIgnore
+    private String password;
+    @Column
+    private long salary;
+    @Column
+    private int age;
 
-    @Size(min=5, message="Name should have atleast 5 characters")
-    @ApiModelProperty(notes="name should have atleast 5 characters")
-    private String name;
-
-    @Past
-    @ApiModelProperty(notes="Birth date should be in the past")
-    private Date dob;
-
-    public User(String name, Date dob) {
-        this.name =name;
-        this.dob=dob;
-    }
-
-    @Override
-    public String toString()
-    {
-      return String.format("User [id=%s, name=%s, dob=%s]", id, name, dob);
-    }
 }
