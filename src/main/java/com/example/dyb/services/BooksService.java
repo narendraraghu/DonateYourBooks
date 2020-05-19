@@ -2,6 +2,7 @@ package com.example.dyb.services;
 
 import com.example.dyb.model.Books;
 import com.example.dyb.repository.BooksRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,12 +11,9 @@ import java.util.List;
 //defining the business logic
 @Service
 public class BooksService {
-    final
-    BooksRepository booksRepository;
 
-    public BooksService(BooksRepository booksRepository) {
-        this.booksRepository = booksRepository;
-    }
+    @Autowired
+    BooksRepository booksRepository;
 
     //getting all books record by using the method findaAll() of CrudRepository
     public List<Books> getAllBooks() {
