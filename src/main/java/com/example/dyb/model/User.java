@@ -5,6 +5,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -38,5 +39,7 @@ public class User {
     private long salary;
     @Column
     private int age;
+    @JsonFormat(pattern = "yyyy-mm-dd")
+    private Date createdDate;
 
 }

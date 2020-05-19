@@ -62,6 +62,7 @@ public class UserServiceImpl implements UserService {
 	    newUser.setPassword(user.getPassword());
 		newUser.setAge(user.getAge());
 		newUser.setSalary(user.getSalary());
+		newUser.setCreatedDate(user.getCreatedDate());
         return userDao.save(newUser);
     }
 }
