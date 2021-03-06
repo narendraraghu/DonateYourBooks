@@ -47,6 +47,11 @@ curl http://192.168.49.2:30626/health
 
 kubectl get all   (to get all the information posd services and deployment)
 
+if 8080 not work make sure our application exposed on 9090
+
+here you go and change the port
+kubectl edit svc donateyourbooks
+
 minikube start --driver=docker
 
 
