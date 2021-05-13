@@ -5,7 +5,7 @@ How to run the project
 mvn clean install
 mvn spring-boot:run
 
-http://localhost:9090/books
+http://localhost:9090/api/books
 
 http://localhost:9090/h2-console/
 
