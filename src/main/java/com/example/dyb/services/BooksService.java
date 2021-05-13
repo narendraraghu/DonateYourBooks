@@ -42,4 +42,8 @@ public class BooksService {
     public void update(Books books, int bookid) {
         booksRepository.save(books);
     }
+
+    public void insertAll(List<Books> books) {
+        booksRepository.saveAll(books);
+    }
 }

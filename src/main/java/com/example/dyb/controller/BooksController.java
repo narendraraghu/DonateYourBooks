@@ -23,6 +23,7 @@ import static java.util.Objects.*;
 @RestController
 @RequestMapping("/api/")
 public class BooksController {
+    private static final String REQUEST_NO_BODY = "REQUEST_NO_BODY" ;
     //autowire the BooksService class
     @Autowired
     BooksService booksService;
@@ -70,4 +71,16 @@ public class BooksController {
         booksService.saveOrUpdate(books);
         return books;
     }
+
+    @PostMapping("bulk")
+    public String addMultipleBooks(@RequestBody List<Books> books) {
+        if(books != null && !books.isEmpty()) {
+            booksService.insertAll(books);
+            return String.format("Added %d people.", books.size());
+        } else {
+            return REQUEST_NO_BODY;
+        }
+    }
+
+
 }
